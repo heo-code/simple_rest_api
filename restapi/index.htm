@@ -1,0 +1,36 @@
+<?php
+
+require __DIR__ .'/common/Autoload.php';
+
+use common\Router;
+use common\ApiGuard;
+use common\Bootstrap;
+use exception\ApiException;
+
+define( "PREFIX_URL", "restapi" );
+
+/**
+ * Bootstrap
+ * - Reg Exception
+ */
+(new Bootstrap())->registers();
+
+/**
+ * API Guard
+ */
+
+$ApiGuard = new ApiGuard();
+$bGuard =  $ApiGuard->guard();
+if( !$bGuard ) {
+  throw new ApiException( "Fail Api Guard", "-401", 401 );
+}
+
+/**
+ * Reg API Router
+ */
+
+Router::add( 'get', "/test/get", "\\controller\\test\\TestController@rest_api" );
+Router::add( 'post', "/test/post", "\\controller\\test\\TestController@test_makeToken" );
+Router::add( 'get', "/test/exception", "\\controller\\test\\TestController@rest_api_exception" );
+
+Router::run(PREFIX_URL);
