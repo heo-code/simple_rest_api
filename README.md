@@ -1,10 +1,7 @@
 # simple_rest_api
 
 
-use pear
+php pear 사용
  - Log
  - MDB2
- 
-use Hashids
- - https://github.com/vinkla/hashids
-
+ 조만간 composer 로 변환 과정 진행 예정
