@@ -14,7 +14,7 @@ class ApiGuard extends Request
     public function __construct(){
         parent::__construct();
         $this->modelToken = new ApiAccessToken();
-        $this->logger = (new Logger())->getLogger();
+        $this->logger = Logger::getLogger();
     }
 
     public function guard()

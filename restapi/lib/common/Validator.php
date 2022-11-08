@@ -2,8 +2,6 @@
 
 namespace lib\common;
 
-use common\Logger;
-
 class Validator
 {
 
@@ -15,7 +13,7 @@ class Validator
     protected $nullVaild = [];
 
     public function __construct(){
-        $this->logger = (new Logger())->getLogger();
+        
     }
 
     public function make( $aData, $aRules )
