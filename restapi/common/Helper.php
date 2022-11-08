@@ -1,7 +1,7 @@
 <?php
 
 use common\Env;
-use lib\http\Response;
+use lib\http\JsonResponse;
 
 /**
  * helper
