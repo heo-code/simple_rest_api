@@ -11,7 +11,7 @@ class Logger
     public function __construct(){
     }
 
-    public function getLogger()
+    public static function getLogger()
     {
         if( is_object( self::$logger ) ) {
             return self::$logger;
@@ -27,5 +27,13 @@ class Logger
         self::$logger = &\Log::singleton( "file", __DIR__."/../log/api/". date("Y") ."/". date("m") ."/". date("d") .".log", "[restApi]", $aLogConf );
 
         return self::$logger;
+    }
+
+    public static function log( $logMsg, $logType="INFO" )
+    {
+        $oLogger = self::getLogger();
+        $type = ( trim( strtoupper( $logType ) ) == "ERROR" ) ? PEAR_LOG_ERR : PEAR_LOG_INFO;
+
+        $oLogger->log( $logMsg, $type );
     }
 }

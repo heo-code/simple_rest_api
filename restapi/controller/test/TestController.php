@@ -12,20 +12,19 @@ class TestController
 
     use CommonTrait;
 
-    protected $logger;
     protected $modelToken;
 
     public function __construct()
     {
-        $this->logger = (new Logger())->getLogger();
         $this->modelToken = new ApiAccessToken();
     }
 
     public function rest_api($request)
     {
         $data = ["result" => "hello word"];
+        Logger::log( $data );
 
-        return response()->json($data);
+        return json_response( $data );
     }
 
     public function rest_api_exception($request)

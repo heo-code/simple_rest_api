@@ -2,16 +2,11 @@
 
 namespace common;
 
-use common\Logger;
-
-include_once "MDB2.php";
-
 class DBConnect
 {
     protected static $oDBConnect;
 
     public function __construct() {
-        $this->logger = (new Logger())->getLogger();
     }
 
     public function getDBConnect( $sDomainName="" )
