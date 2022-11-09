@@ -21,7 +21,7 @@ class TestController
 
     public function rest_api($request)
     {
-        $data = ["result" => "hello world"];
+        $data = ["result" => "SUCCESS", "msg" => "hello world"];
         Logger::log( $data );
 
         return json_response( $data );
