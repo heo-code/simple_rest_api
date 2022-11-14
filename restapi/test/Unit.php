@@ -37,15 +37,4 @@ class Unit
         $this->modelToken->createToken("toekn_name", $sToken, ["abilities"], '11.22.33.44', '2022-10-13');
     }
 
-    public function tokenRandom($length = 20)
-    {
-        $string = '';
-        while (($len = strlen($string)) < $length) {
-            $size = $length - $len;
-            $bytes = openssl_random_pseudo_bytes($size);
-            $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
-        }
-
-        return $string;
-    }
 }
