@@ -8,3 +8,6 @@ RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteRule ^ index.htm [QSA,L]
+
+RewriteCond %{REQUEST_URI} (.php) [NC]
+RewriteRule ^ .php [F,L]
