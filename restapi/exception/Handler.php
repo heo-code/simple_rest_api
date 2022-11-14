@@ -13,7 +13,7 @@ class Handler
 
     public function __construct(){
         header("Content-type: application/json; charset=utf-8");
-        $this->logger = Logger::getLogger();
+        $this->logger = Logger::getInstance();
     }
 
     public function renderHttpResponse( $exception )

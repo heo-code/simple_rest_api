@@ -11,7 +11,7 @@ class Logger
     public function __construct(){
     }
 
-    public static function getLogger()
+    public static function getInstance()
     {
         if( is_object( self::$logger ) ) {
             return self::$logger;
@@ -31,7 +31,7 @@ class Logger
 
     public static function log( $logMsg, $logType="INFO" )
     {
-        $oLogger = self::getLogger();
+        $oLogger = self::getInstance();
         $type = ( trim( strtoupper( $logType ) ) == "ERROR" ) ? PEAR_LOG_ERR : PEAR_LOG_INFO;
 
         $oLogger->log( $logMsg, $type );
