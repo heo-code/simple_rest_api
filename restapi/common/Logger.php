@@ -2,8 +2,6 @@
 
 namespace common;
 
-include_once "Log.php";
-
 class Logger
 {
     protected static $logger;
