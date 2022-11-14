@@ -12,7 +12,7 @@ trait CommonTrait
         // [ "dataKey_1" => "required|string|numeric|array|bool|nullable|nameset|size:255|max:255" ],
         // [ "dataKey_2" => [ "required", "reg"=>"[a-zA-Z]+" ] ],
         // [ "dataKey_2" => [ "reg"=>"[a-zA-Z]+" ] ],
-        $logger = (new Logger())->getLogger();
+        $logger = Logger::getInstance();
 
         if( !is_Array( $aRules ) || !count( $aRules ) ) return false;
 
@@ -30,5 +30,17 @@ trait CommonTrait
             return false;
         }
         return true;
+    }
+
+    public function tokenRandom($length = 20)
+    {
+        $string = '';
+        while (($len = strlen($string)) < $length) {
+            $size = $length - $len;
+            $bytes = openssl_random_pseudo_bytes($size);
+            $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
+        }
+
+        return $string;
     }
 }

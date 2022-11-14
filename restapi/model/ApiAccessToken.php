@@ -13,7 +13,7 @@ class ApiAccessToken extends DBConnect
 
     public function __construct()
     {
-        $this->logger = (new Logger())->getLogger();
+        $this->logger = Logger::getInstance();
         $this->mdb = $this->getDBConnect();
     }
 
